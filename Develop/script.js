@@ -7,19 +7,17 @@ var submitEl= $(".saveBtn");
 
 
 submitEl.on("click", function(){ // TODO: Add a listener for click events on the save button.
-       var textAreaEl = $(".description").val();
-
+      var textAreaEl = $(".description").val();
+      var blockNum = ($(this).parents().attr("id"));
      
-      console.log(this.textAreaEl);
-      localStorage.setItem(("task"), textAreaEl); 
+      console.log($(this).parents().attr("id"));
+      localStorage.setItem(($(this).parents().attr("id")), textAreaEl); 
       
-      for (var i=0; i<submitEl.length; i++){
-  
         if (currentTime > blockNum ){
-          this.addClass("past")
-          this.removeClass("future present")
+          $(this).addClass("past");
+          $(this).removeClass("future present");
         }
-      }
+    //  }
   });
 
 
@@ -29,7 +27,7 @@ setInterval(function(){
 }, 1000);
 
 
-console.log(currentTime);
+console.log("cur",currentTime);
 
 
 
