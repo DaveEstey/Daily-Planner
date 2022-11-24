@@ -6,19 +6,26 @@ var currentTime = (dayjs().format("h"));
 var submitEl= $(".saveBtn");
 
 
+
 submitEl.on("click", function(){ // TODO: Add a listener for click events on the save button.
-      var textAreaEl = $(".description").val();
-      var blockNum = ($(this).parents().attr("id"));
+      var textAreaEl = $(this).siblings(".description").val();
+      var blockNum = $(this).parents().attr("id");
      
-      console.log($(this).parents().attr("id"));
-      localStorage.setItem(($(this).parents().attr("id")), textAreaEl); 
+      localStorage.setItem(blockNum, textAreaEl); 
       
-        if (currentTime > blockNum ){
-          $(this).addClass("past");
-          $(this).removeClass("future present");
-        }
-    //  }
-  });
+      });
+    for (var i=0; i<$(".time-block").length; i++){
+        $("hour-"+ i + " .description").val(localStorage.getItem("hour-"+ i));
+ 
+    }
+
+       
+  /*     if (currentTime > blockNum ){
+      $(this).addClass("past");
+      $(this).removeClass("future present"); */
+
+   // }
+  
 
 
 
@@ -29,7 +36,7 @@ setInterval(function(){
 
 console.log("cur",currentTime);
 
-
+});
 
 
   // use the id in the containing time-block as a key to save the user input in
@@ -50,4 +57,4 @@ console.log("cur",currentTime);
   //
   // TODO: Add code to display the current date in the header of the page.
       
-});
+
