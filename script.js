@@ -17,7 +17,6 @@ $(function () {
  setInterval(function () { // TODO: Add code to display the current date in the header of the page.
     $("#currentDay").text(dayjs());  
     var currentTime = (dayjs().format("H"));
-    console.log(currentTime)
     $(".time-block").each(function(index){  // TODO: Add code to apply the past, present, or future class to each time
     if (currentTime > (index+8)) {
       $(this).addClass("past");
